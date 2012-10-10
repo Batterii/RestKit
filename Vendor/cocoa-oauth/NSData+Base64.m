@@ -93,6 +93,11 @@ void *NewBase64Decode(
 		((length+BASE64_UNIT_SIZE-1) / BASE64_UNIT_SIZE) * BINARY_UNIT_SIZE;
 	unsigned char *outputBuffer = (unsigned char *)malloc(outputBufferSize);
 	
+	if (!outputBuffer)
+	{
+		return NULL;
+	}
+	
 	size_t i = 0;
 	size_t j = 0;
 	while (i < length)
