@@ -448,6 +448,8 @@ RKRequestMethod RKRequestMethodTypeFromName(NSString *methodName) {
 
     RKResponse *response = [[[RKResponse alloc] initWithRequest:self] autorelease];
 
+    _URLRequest.timeoutInterval = _timeoutInterval + 10;  //We let our timer fire first
+
     _connection = [[[[NSURLConnection alloc] initWithRequest:_URLRequest delegate:response startImmediately:NO] autorelease] retain];
     [_connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:self.runLoopMode];
     [_connection start];
