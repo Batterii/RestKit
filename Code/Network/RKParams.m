@@ -70,6 +70,11 @@ NSString * const kRKStringBoundary = @"0xKhTmLbOuNdArY";
     [super dealloc];
 }
 
+- (void)removeFromRunLoop:(NSRunLoop *)aRunLoop
+                  forMode:(NSString *)mode {
+    //JAK - NOTE: this was added due to iOS 8 expecting to call this method on subclasses of NSInputStream  
+}
+
 - (RKParams *)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [self init];
